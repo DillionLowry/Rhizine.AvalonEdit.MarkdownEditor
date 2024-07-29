@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>Rhizine.AvalonEdit.MarkdownEditor</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Dillion Lowry</Authors>
+	<Description>A Markdown editor control extension for AvalonEdit's TextEditor.</Description>
+	<PackageTags>wpf;markdown;editor</PackageTags>
+	<Copyright>Copyright (c) 2024 Dillion Lowry</Copyright>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<Title>Rhizine.AvalonEdit.MarkdownEditor</Title>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Styles\DefaultMarkdown.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\DefaultMarkdown.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
