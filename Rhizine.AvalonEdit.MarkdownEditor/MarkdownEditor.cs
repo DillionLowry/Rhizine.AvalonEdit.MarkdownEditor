@@ -48,8 +48,6 @@ public class MarkdownEditor : TextEditor
     }
     public MarkdownEditor() : base()
     {
-        Transformer = new MarkdownColorizingTransformer();
-        TextArea.TextView.LineTransformers.Add(Transformer);
         HighlightingManager.Instance.RegisterHighlighting("DefaultMarkdown",
             [".md", ".markdown"],
             CreateDefaultCustomHighlighting());
