@@ -17,10 +17,8 @@
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Styles\DefaultMarkdown.xshd" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Styles\DefaultMarkdown.xshd" />
+    <EmbeddedResource Include="Themes\DefaultMarkdown.xshd">
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.3.0.90" />

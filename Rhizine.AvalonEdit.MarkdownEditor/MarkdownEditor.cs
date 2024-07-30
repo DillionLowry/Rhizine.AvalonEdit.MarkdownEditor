@@ -1,4 +1,5 @@
 ﻿using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit.Highlighting;
 using System.IO;
 using System.Windows;
@@ -45,8 +46,10 @@ public class MarkdownEditor : TextEditor
         DefaultStyleKeyProperty.OverrideMetadata(typeof(MarkdownEditor),
             new FrameworkPropertyMetadata(typeof(MarkdownEditor)));
     }
-    public MarkdownEditor()
+    public MarkdownEditor() : base()
     {
+        Transformer = new MarkdownColorizingTransformer();
+        TextArea.TextView.LineTransformers.Add(Transformer);
         HighlightingManager.Instance.RegisterHighlighting("DefaultMarkdown",
             [".md", ".markdown"],
             CreateDefaultCustomHighlighting());
@@ -141,7 +144,7 @@ public class MarkdownEditor : TextEditor
 
     private IHighlightingDefinition CreateDefaultCustomHighlighting()
     {
-        const string resourceName = "Rhizine.AvalonEdit.MarkdownEditor.DefaultMarkdown.xshd";
+        const string resourceName = "Rhizine.AvalonEdit.MarkdownEditor.Themes.DefaultMarkdown.xshd";
         using Stream s = typeof(MarkdownEditor).Assembly.GetManifestResourceStream(resourceName)
                             ?? throw new InvalidOperationException("Could not find resource " + resourceName);
 
