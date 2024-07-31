@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0"?>
 <SyntaxDefinition name="DefaultMarkdown" extensions=".md" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
-	<Color name="Heading1" foreground="Maroon" fontSize="30" exampleText="# Title #" />
-	<Color name="Heading2" foreground="Maroon" fontSize="27" exampleText="# Title #" />
-	<Color name="Heading3" foreground="Maroon" fontSize="24" exampleText="# Title #" />
-	<Color name="Heading4" foreground="Maroon" fontSize="21" exampleText="# Title #" />
-	<Color name="Heading5" foreground="Maroon" fontSize="18" exampleText="# Title #" />
-	<Color name="Heading6" foreground="Maroon" fontSize="15" exampleText="# Title #" />
-	<Color name="Emphasis" fontStyle="italic" exampleText="*this* is important!" />
-	<Color name="StrongEmphasis" fontWeight="bold" exampleText="**this** is more important!" />
-	<Color name="Code" fontFamily="Footlight MT Light" exampleText="this is `int.GetHashCode()`" />
-	<Color name="BlockQuote" foreground="DarkBlue" exampleText="&gt; This is a\r\n&gt; quote." />
+	<Color name="Heading1" foreground="Blue" fontSize="30" exampleText="# Title" />
+	<Color name="Heading2" foreground="Teal" fontSize="27" exampleText="## Title" />
+	<Color name="Heading3" foreground="Teal" fontSize="24" exampleText="### Title" />
+	<Color name="Heading4" foreground="Teal" fontSize="21" exampleText="#### Title" />
+	<Color name="Heading5" foreground="Teal" fontSize="18" exampleText="##### Title" />
+	<Color name="Heading6" foreground="Teal" fontSize="15" exampleText="###### Title" />
+	<Color name="Italic" fontStyle="italic" exampleText="*this* is important!" />
+	<Color name="Bold" fontWeight="bold" exampleText="**this** is more important!" />
+	<Color name="BoldItalic" fontWeight="bold" fontStyle="italic" exampleText="***this*** is very important!" />
+	<Color name="Code" fontFamily="Consolas" exampleText="this is ```csharp\r\nint.GetHashCode()\r\n```" />
+	<Color name="BlockQuote" foreground="#282829" fontStyle="italic" exampleText="> This is a quote." />
 	<Color name="Link" foreground="Blue" exampleText="[text](http://example.com)" />
 	<Color name="Image" foreground="Green" exampleText="[text][http://example.com/test.png]" />
 	<Color name="LineBreak" background="LightGray" exampleText="end of line      \r\n2nd line   " />
+	<Color name="List" foreground="#FFFF6347" />
 
 	<RuleSet ignoreCase="true">
 		<Rule color="Heading1">
@@ -33,44 +35,90 @@
 		<Rule color="Heading6">
 			^[#]{6}[ ]{1}.*
 		</Rule>
-		<Rule color="StrongEmphasis">
-			\*\*.*\*\*
-		</Rule>
-		<Rule color="StrongEmphasis">
-			__.*__
-		</Rule>
-		<Rule color="Emphasis">
-			\*(?![ ]).*\*
-		</Rule>
-		<Rule color="Emphasis">
-			_.*_
-		</Rule>
-		<Rule color="Code">
-			`.*`
-		</Rule>
-		<Span color="Code" ruleSet="C#/" multiline="true">
-			<Begin>^\t</Begin>
-			<End>^(?!\t)</End>
+
+		<Rule color="Italic">\*[^\*\n]+\*</Rule>
+		<Rule color="Bold">\*\*[^\*\n]+\*\*</Rule>
+		<Rule color="BoldItalic">\*\*\*[^\*\n]+\*\*\*</Rule>
+
+
+		<!-- C# -->
+		<Span color="Code" multiline="true" ruleSet="C#/">
+			<Begin>```\s?csharp|```\s?cs</Begin>
+			<End>```</End>
 		</Span>
-		<Span color="Code" ruleSet="C#/" multiline="true">
-			<Begin>^[ ]{4}</Begin>
-			<End>^(?![ ]{4})</End>
+
+		<!-- JavaScript -->
+		<Span color="Code" multiline="true" ruleSet="JavaScript/">
+			<Begin>```\s?javascript|```\s?js</Begin>
+			<End>```</End>
 		</Span>
-		<Span color="BlockQuote" multiline="true">
-			<Begin>^&gt;</Begin>
-			<End>^(?!&gt;)</End>
+
+		<!-- Python -->
+		<Span color="Code" multiline="true" ruleSet="Python/">
+			<Begin>```\s?python|```\s?py</Begin>
+			<End>```</End>
 		</Span>
-		<Rule color="Image">
-			\!\[.*\]\[.*\]
-		</Rule>
-		<Rule color="Link">
-			\[.*\]\(.*\)
-		</Rule>
-		<Rule color="Link">
-			\[.*\]\[.*\]
-		</Rule>
-		<Rule color="LineBreak">
-			[ ]{2}$
-		</Rule>
+
+		<!-- Java -->
+		<Span color="Code" multiline="true" ruleSet="Json/">
+			<Begin>```\s?json</Begin>
+			<End>```</End>
+		</Span>
+
+		<!-- HTML -->
+		<Span color="Code" multiline="true" ruleSet="HTML/">
+			<Begin>```\s?html</Begin>
+			<End>```</End>
+		</Span>
+
+		<!-- CSS -->
+		<Span color="Code" multiline="true" ruleSet="CSS/">
+			<Begin>```\s?css</Begin>
+			<End>```</End>
+		</Span>
+
+		<!-- XML -->
+		<Span color="Code" multiline="true" ruleSet="XML/">
+			<Begin>```\s?xml|```\s?xaml</Begin>
+			<End>```</End>
+		</Span>
+
+		<!-- SQL -->
+		<Span color="Code" multiline="true" ruleSet="TSQL/">
+			<Begin>```\s?sql</Begin>
+			<End>```</End>
+		</Span>
+
+		<!-- PHP -->
+		<Span color="Code" multiline="true" ruleSet="PHP/">
+			<Begin>```\s?php</Begin>
+			<End>```</End>
+		</Span>
+
+		<!-- C++ -->
+		<Span color="Code" multiline="true" ruleSet="C++/">
+			<Begin>```\s?cpp|```\s?c\+\+</Begin>
+			<End>```</End>
+		</Span>
+
+		<Span color="Code" multiline="true" ruleSet="PowerShell/">
+			<Begin>```\s?powershell|```ps</Begin>
+			<End>```</End>
+		</Span>
+
+		<!-- Generic code block (for languages without a specific ruleset) -->
+		<Span color="Code" multiline="true">
+			<Begin>```\w*</Begin>
+			<End>```</End>
+		</Span>
+
+		<Rule color="BlockQuote">^>\s.*$</Rule>
+
+		<Rule color="Link">\[([^\]]+)\]\(([^\)]+)\)</Rule>
+		<Rule color="Image">!\[([^\]]+)\]\(([^\)]+)\)</Rule>
+
+		<Rule color="LineBreak">\r\n$</Rule>
+
+		<Rule color="List">^(\s*[-*+]|\s*\d+\.)\s</Rule>
 	</RuleSet>
 </SyntaxDefinition>

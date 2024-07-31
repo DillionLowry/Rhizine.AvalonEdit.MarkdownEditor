@@ -123,8 +123,11 @@ public class MarkdownEditor : TextEditor
     private static void OnIsMarkdownHiddenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var editor = (MarkdownEditor)d;
-        editor.Transformer.HideMarkdown = (bool)e.NewValue;
-        editor.TextArea.TextView.Redraw();
+        if (editor.Transformer != null)
+        {
+            editor.Transformer.HideMarkdown = (bool)e.NewValue;
+            editor.TextArea.TextView.Redraw();
+        }
     }
 
     private static void OnTransformerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -136,7 +139,28 @@ public class MarkdownEditor : TextEditor
         }
         if (e.NewValue is MarkdownColorizingTransformer newTransformer)
         {
+            newTransformer.HideMarkdown = editor.IsMarkdownHidden;
+            newTransformer.IsEditMode = !editor.IsReadOnly;
             editor.TextArea.TextView.LineTransformers.Add(newTransformer);
+        }
+        editor.TextArea.TextView.Redraw();
+    }
+    protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+    {
+        base.OnPropertyChanged(e);
+
+        if (e.Property == IsReadOnlyProperty)
+        {
+            UpdateTransformerEditMode();
+        }
+    }
+
+    private void UpdateTransformerEditMode()
+    {
+        if (Transformer != null)
+        {
+            Transformer.IsEditMode = !IsReadOnly;
+            TextArea.TextView.Redraw();
         }
     }
 
