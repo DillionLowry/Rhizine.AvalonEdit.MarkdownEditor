@@ -144,32 +144,6 @@
                     IsMarkdownHidden="{Binding IsReadOnly}"
                     IsReadOnly="{Binding IsReadOnly}"
                     ShowLineNumbers="True" />
-
-                <!--<avalonedit:TextEditor Grid.Row="1"
-
-                                       Foreground="{DynamicResource MahApps.Brushes.Text}"
-
-                                       Document="{Binding CurrentPageContent, Mode=TwoWay}"
-
-                                       SyntaxHighlighting="MarkDownWithFontSize"
-
-                                       Style="{StaticResource MarkdownTextEditorStyle}"
-
-                                       IsReadOnly="{Binding IsReadOnly}"
-
-                                        FontFamily="Segoe UI"
-
-                                        FontSize="14"
-
-                                        ShowLineNumbers="False">
-
-                    <behaviors:Interaction.Behaviors>
-
-                        <local:MarkdownEditorBehavior Transformer="{Binding MarkdownTransformer}" />
-                    </behaviors:Interaction.Behaviors>
-                </avalonedit:TextEditor>-->
-
-                <!--  SyntaxHighlighting="Markdown"  -->
             </Grid>
         </Grid>
     </Grid>

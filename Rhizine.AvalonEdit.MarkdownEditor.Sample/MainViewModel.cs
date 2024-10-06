@@ -35,7 +35,7 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CurrentPageContent))]
     [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
-    private MarkdownPage _selectedPage;
+    private MarkdownPage? _selectedPage;
 
     #endregion Fields
 
